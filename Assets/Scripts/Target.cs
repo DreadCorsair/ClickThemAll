@@ -1,15 +1,40 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Target : MonoBehaviour {
+public class Target : MonoBehaviour 
+{
+	public int Price;
+	public int MaxHealth;
 
-	// Use this for initialization
-	void Start () {
-	
+	private int _currentHealth;
+	private bool _onMouse;
+
+	void Start() 
+	{
+		_currentHealth = MaxHealth;
+		_onMouse = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void Update() 
+	{
+		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
+		{
+			_currentHealth--;
+		}
+		if(_currentHealth <= 0)
+		{
+			_currentHealth = MaxHealth;
+			_onMouse = false;
+		}
 	}
+
+	void OnMouseEnter()
+	{
+		_onMouse = true;
+	}
+	
+	void OnMouseExit()
+	{
+		_onMouse = false;
+	}
+
 }
