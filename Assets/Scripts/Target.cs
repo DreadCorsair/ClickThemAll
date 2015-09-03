@@ -8,14 +8,17 @@ public class Target : MonoBehaviour
 	private int _currentHealth;
 	private bool _onMouse;
 
-	void Start() 
+
+	private void OnEnable() 
 	{
 		_currentHealth = MaxHealth;
 		_onMouse = false;
 	}
 	
-	void Update() 
+	private void Update() 
 	{
+		float thrust = Pitcher.Thrust;
+		gameObject.rigidbody2D.AddForce(-Vector2.right * thrust);
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			_currentHealth--;
@@ -27,14 +30,13 @@ public class Target : MonoBehaviour
 		}
 	}
 
-	void OnMouseEnter()
+	private void OnMouseEnter()
 	{
 		_onMouse = true;
 	}
 	
-	void OnMouseExit()
+	private void OnMouseExit()
 	{
 		_onMouse = false;
 	}
-
 }
