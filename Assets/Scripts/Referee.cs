@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Referee : MonoBehaviour {
+public class Referee : MonoBehaviour 
+{
+	public static int Score {get; set;}
+	public static int Misses {get; set;}
 
-	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		Debug.Log("Score: " + Score);
+		Debug.Log("Misses: " + Misses);
 	}
 }

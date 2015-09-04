@@ -25,6 +25,7 @@ public class Target : MonoBehaviour
 		if(_currentHealth <= 0)
 		{
 			gameObject.Recycle();
+			Referee.Score += Price;
 		}
 	}
 
