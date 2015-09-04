@@ -17,16 +17,14 @@ public class Target : MonoBehaviour
 	
 	private void Update() 
 	{
-		float thrust = Pitcher.Thrust;
-		gameObject.rigidbody2D.AddForce(-Vector2.right * thrust);
+		gameObject.rigidbody2D.AddForce(-Vector2.right * Pitcher.Thrust);
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			_currentHealth--;
 		}
 		if(_currentHealth <= 0)
 		{
-			_currentHealth = MaxHealth;
-			_onMouse = false;
+			gameObject.Recycle();
 		}
 	}
 

@@ -3,13 +3,17 @@ using System.Collections;
 
 public class Pitcher : MonoBehaviour 
 {
-	public Target CirclePrefab;
-	public Target SquarePrefab;
+	public int CirclePoolSize;
+	public int SquarePoolSize;
 
 	public float PitchFrequency;
 	private float _timer;
 
 	public float InitialThrust;
+
+	public Target CirclePrefab;
+	public Target SquarePrefab;
+
 	public static float Thrust {get; private set;}
 
 
@@ -17,6 +21,8 @@ public class Pitcher : MonoBehaviour
 	{
 		_timer = 0.0f;
 		Thrust = InitialThrust;
+		ObjectPool.CreatePool(CirclePrefab, CirclePoolSize);
+		ObjectPool.CreatePool(SquarePrefab, SquarePoolSize);
 	}
 	
 	private void Update () 
