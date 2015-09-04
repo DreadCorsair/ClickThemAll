@@ -8,17 +8,24 @@ public class Pitcher : MonoBehaviour
 	public int CirclePoolSize;
 	public int SquarePoolSize;
 
-	public float InitialThrust;
-	public static float Thrust { get; private set; }
+	public float CircleInitialThrust;
+	public float SquareInitialThrust;
+	public float AccelerationPerLevel;
+
+	public static float CircleThrust { get; private set; }
+	public static float SquareThrust { get; private set; }
 
 	public float PitchFrequency;
+	public float FrequentPerLevel;
 	private float _timer;
 
 
 	private void Start () 
 	{
+		CircleThrust = CircleInitialThrust;
+		SquareThrust = SquareInitialThrust;
+
 		_timer = 0.0f;
-		Thrust = InitialThrust;
 
 		ObjectPool.CreatePool(CirclePrefab, CirclePoolSize);
 		ObjectPool.CreatePool(SquarePrefab, SquarePoolSize);
@@ -38,6 +45,13 @@ public class Pitcher : MonoBehaviour
 		}
 
 		_timer += Time.deltaTime;
+	}
+
+	public void Accelerate()
+	{
+		CircleThrust += AccelerationPerLevel;
+		SquareThrust += AccelerationPerLevel;
+		PitchFrequency -= FrequentPerLevel;
 	}
 
 	private Vector2 CalculateSpawnPosition()
