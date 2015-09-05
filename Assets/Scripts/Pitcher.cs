@@ -1,7 +1,19 @@
 ﻿using UnityEngine;
 
-public class Pitcher : MonoBehaviour 
+public class Pitcher : MonoBehaviour
 {
+	//Singleton
+	private static Pitcher _instance;
+	public static Pitcher Instance
+	{
+		get
+		{
+			if(_instance == null)
+				_instance = GameObject.FindObjectOfType<Pitcher>();
+			return _instance;
+		}
+	}
+
 	public Target CirclePrefab;
 	public Target SquarePrefab;
 
@@ -20,7 +32,7 @@ public class Pitcher : MonoBehaviour
 	private float _timer;
 
 
-	private void Start () 
+	private void Start()
 	{
 		CircleThrust = CircleInitialThrust;
 		SquareThrust = SquareInitialThrust;
@@ -31,7 +43,7 @@ public class Pitcher : MonoBehaviour
 		ObjectPool.CreatePool(SquarePrefab, SquarePoolSize);
 	}
 	
-	private void Update () 
+	private void Update() 
 	{
 		if(_timer > PitchFrequency)
 		{
@@ -52,6 +64,20 @@ public class Pitcher : MonoBehaviour
 		CircleThrust += AccelerationPerLevel;
 		SquareThrust += AccelerationPerLevel;
 		PitchFrequency -= FrequentPerLevel;
+
+		if(CircleThrust >= 2f && SquareThrust >= 1f)
+		{
+			CircleThrust = 2f;
+			SquareThrust = 1f;
+		}
+		if(PitchFrequency < 1.5f)
+		{
+			PitchFrequency = 1.5f;
+		}
+
+		Debug.Log("Circle Thrust: " + CircleThrust);
+		Debug.Log("Square Thrust: " + SquareThrust);
+		Debug.Log("Frequency: " + PitchFrequency);
 	}
 
 	private Vector2 CalculateSpawnPosition()
