@@ -3,6 +3,7 @@
 public class EventController : MonoBehaviour 
 {
 	public Referee Referee;
+	public Pitcher Pitcher;
 	public Statistics Statistics;
 	public EscMenu EscMenu;
 	public GameOverMenu GameOverMenu;
@@ -17,6 +18,7 @@ public class EventController : MonoBehaviour
 		Referee.GameOver += Statistics.Hide;
 		Referee.GameOver += ObjectPool.RecycleAll;
 		Referee.GameOver += EscMenu.Lock;
+		Referee.LevelUp += Pitcher.Accelerate;
 	}
 
 	private void OnDestroy()

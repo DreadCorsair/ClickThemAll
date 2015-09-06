@@ -5,12 +5,15 @@ public class Pitcher : MonoBehaviour
 	public Target CirclePrefab;
 	public Target SquarePrefab;
 
-	public float PitchFrequency;
+	public float BasicFrequency;
+	public float MaxFrequency;
+	private float _frequency;
 	private float _timer;
 
 
 	private void Start()
 	{
+		_frequency = BasicFrequency;
 		_timer = 0.0f;
 
 		ObjectPool.CreatePool(CirclePrefab, 5);
@@ -19,7 +22,7 @@ public class Pitcher : MonoBehaviour
 	
 	private void Update() 
 	{
-		if(_timer >= PitchFrequency)
+		if(_timer >= _frequency)
 		{
 			Vector2 circleSpawnPos = CalculateSpawnPosition();
 			Vector2 squareSpawnPos = CalculateSpawnPosition();
@@ -41,5 +44,13 @@ public class Pitcher : MonoBehaviour
 		float randValueY = Random.Range(spawnMinPos.y, spawnMaxPos.y);
 		
 		return new Vector3(0.0f, randValueY);
+	}
+
+	public void Accelerate()
+	{
+		float newFreq = _frequency - 0.01f * BasicFrequency * Statistics.Level;
+		if(newFreq > MaxFrequency)
+			_frequency = newFreq;
+		Debug.Log("freq: " + _frequency.ToString());
 	}
 }

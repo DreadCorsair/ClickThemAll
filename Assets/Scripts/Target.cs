@@ -6,11 +6,19 @@ public class Target : MonoBehaviour
 	public int Price;
 	public int Health;
 	public float BasicSpeed;
+	public float MaxSpeed;
 
+	private float _speed;
 	private int _health;
 	private Image _healthBar;
 	private bool _onMouse;
 
+
+	private void Start()
+	{
+		_speed = BasicSpeed;
+		Referee.LevelUp += SpeedUp;
+	}
 
 	private void OnEnable() 
 	{
@@ -20,12 +28,14 @@ public class Target : MonoBehaviour
 				               FindChild("HealthBarFill").
 				               GetComponent<Image>();
 		_healthBar.fillAmount = 1;
-		gameObject.rigidbody2D.velocity = -Vector2.right * BasicSpeed;
+
 		_onMouse = false;
 	}
 
 	private void Update()
 	{
+		gameObject.rigidbody2D.velocity = -Vector2.right * _speed;
+
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			_health--;
@@ -46,5 +56,12 @@ public class Target : MonoBehaviour
 	private void OnMouseExit()
 	{
 		_onMouse = false;
+	}
+
+	public void SpeedUp()
+	{
+		float newSpeed = _speed + 0.01f * BasicSpeed * Statistics.Level;
+		if(newSpeed < MaxSpeed)
+			_speed = newSpeed;
 	}
 }

@@ -7,6 +7,7 @@ public class Referee : MonoBehaviour
 	private float _timer;
 
 	public static event EventController.MethodContainer GameOver;
+	public static event EventController.MethodContainer LevelUp;
 
 	private void Start()
 	{
@@ -18,6 +19,7 @@ public class Referee : MonoBehaviour
 		if(_timer >= TimeToLevelUp * Statistics.Level)
 		{
 			Statistics.Level++;
+			LevelUp();
 		}
 		_timer += Time.deltaTime;
 
