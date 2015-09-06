@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour 
 {
@@ -9,6 +10,7 @@ public class GameOverMenu : MonoBehaviour
 
 	public void Display()
 	{
+		transform.FindChild("Score").GetComponent<Text>().text = Statistics.Score.ToString();
 		gameObject.SetActive(true);
 	}
 }
