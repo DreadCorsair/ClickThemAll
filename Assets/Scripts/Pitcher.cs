@@ -48,7 +48,7 @@ public class Pitcher : MonoBehaviour
 
 	public void Accelerate()
 	{
-		float newFreq = _frequency - 0.01f * BasicFrequency * Statistics.Level;
+		float newFreq = _frequency - 0.05f * BasicFrequency * Statistics.Level;
 		if(newFreq > MaxFrequency)
 			_frequency = newFreq;
 		Debug.Log("freq: " + _frequency.ToString());

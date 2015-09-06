@@ -60,7 +60,7 @@ public class Target : MonoBehaviour
 
 	public void SpeedUp()
 	{
-		float newSpeed = _speed + 0.01f * BasicSpeed * Statistics.Level;
+		float newSpeed = _speed + 0.05f * BasicSpeed * Statistics.Level;
 		if(newSpeed < MaxSpeed)
 			_speed = newSpeed;
 	}
