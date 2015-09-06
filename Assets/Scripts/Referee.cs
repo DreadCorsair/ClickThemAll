@@ -7,18 +7,17 @@ public class Referee : MonoBehaviour
 
 	public static int Score { get; set; }
 	public static int Misses { get; set; }
+	public static int Level { get; private set; }
 
 	private int _scoreToLevelUp;
 	private int _missesToGameOver;
-
-	private int _currentLevel;
 
 
 	private void Start()
 	{
 		_scoreToLevelUp = ScoreToLevelUp;
 		_missesToGameOver = MissesToGameOver;
-		_currentLevel = 1;
+		Level = 1;
 	}
 
 	private void Update() 
@@ -27,8 +26,8 @@ public class Referee : MonoBehaviour
 		{
 			Pitcher.Instance.Accelerate();
 			_scoreToLevelUp = Score + ScoreToLevelUp;
-			_currentLevel++;
-			Debug.Log("LEVEL: " + _currentLevel);
+			Level++;
+			Debug.Log("LEVEL: " + Level);
 		}
 		if(Misses >= _missesToGameOver)
 		{
