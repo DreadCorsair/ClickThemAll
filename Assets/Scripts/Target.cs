@@ -11,6 +11,8 @@ public class Target : MonoBehaviour
 	private bool _onMouse;
 	private float _thrust;
 
+	public static event EventController.MethodContainer OnDie;
+
 	private void OnEnable() 
 	{
 		_currentHealth = MaxHealth;
@@ -41,7 +43,7 @@ public class Target : MonoBehaviour
 		if(_currentHealth <= 0)
 		{
 			gameObject.Recycle();
-			Referee.Score += Price;
+			OnDie();
 		}
 	}
 

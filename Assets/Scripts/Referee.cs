@@ -34,4 +34,9 @@ public class Referee : MonoBehaviour
 
 		}
 	}
+
+	public void ScoreAdd()
+	{
+		Score += 1;
+	}
 }
