@@ -11,7 +11,7 @@ public class Target : MonoBehaviour
 	private bool _onMouse;
 	private float _thrust;
 
-	public static event EventController.VoidMethodContainer Die;
+	public static event EventController.IntegerMethodContainer Die;
 
 	private void OnEnable() 
 	{
@@ -43,7 +43,7 @@ public class Target : MonoBehaviour
 		if(_currentHealth <= 0)
 		{
 			gameObject.Recycle();
-			Die();
+			Statistics.Score += Price;
 		}
 	}
 

@@ -2,8 +2,6 @@
 
 public class Referee : MonoBehaviour 
 {
-	public static event EventController.VoidMethodContainer LevelUp;
-
 	public int MaxPlayerLifes;
 	public float TimePerLevel;
 	private float _timer;
@@ -26,5 +24,10 @@ public class Referee : MonoBehaviour
 		{
 
 		}
+	}
+
+	public void FixDamage()
+	{
+		Statistics.PlayerLifes--;
 	}
 }

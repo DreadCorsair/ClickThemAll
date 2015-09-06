@@ -10,10 +10,10 @@ public class UIManager : MonoBehaviour
 
 	private void Update()
 	{
-		if(Referee.PlayerLifes >= 0)
-			Lifes.text = Referee.PlayerLifes.ToString();
-		Score.text = Referee.Score.ToString();
-		Level.text = Referee.Level.ToString();
+		if(Statistics.PlayerLifes >= 0)
+			Lifes.text = Statistics.PlayerLifes.ToString();
+		Score.text = Statistics.Score.ToString();
+		Level.text = Statistics.Level.ToString();
 	}
 
 	public void StartGame()
