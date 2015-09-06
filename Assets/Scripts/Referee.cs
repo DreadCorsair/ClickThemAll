@@ -20,14 +20,11 @@ public class Referee : MonoBehaviour
 		{
 			Statistics.Level++;
 		}
+		_timer += Time.deltaTime;
+
 		if(Statistics.PlayerLifes <= 0)
 		{
 
 		}
-	}
-
-	public void FixDamage()
-	{
-		Statistics.PlayerLifes--;
 	}
 }

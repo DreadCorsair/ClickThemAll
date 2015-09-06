@@ -4,43 +4,34 @@ using UnityEngine.UI;
 public class Target : MonoBehaviour 
 {
 	public int Price;
-	public int MaxHealth;
+	public int Health;
+	public float BasicSpeed;
 
-	private int _currentHealth;
+	private int _health;
 	private Image _healthBar;
 	private bool _onMouse;
-	private float _thrust;
 
-	public static event EventController.IntegerMethodContainer Die;
 
 	private void OnEnable() 
 	{
-		_currentHealth = MaxHealth;
+		_health = Health;
 		_healthBar = transform.FindChild("EnemyCanvas").
 							   FindChild("HealthBarBg").
 				               FindChild("HealthBarFill").
 				               GetComponent<Image>();
 		_healthBar.fillAmount = 1;
+		gameObject.rigidbody2D.velocity = -Vector2.right * BasicSpeed;
 		_onMouse = false;
-		_thrust = 0.0f;
 	}
-	
+
 	private void Update() 
 	{
-		if(gameObject.tag == "circle")
-			_thrust = Pitcher.CircleThrust;
-		else if(gameObject.tag == "square")
-			_thrust = Pitcher.SquareThrust;
-		
-		//move
-		gameObject.rigidbody2D.AddForce(-Vector2.right * _thrust);
-		
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			_currentHealth--;
-			_healthBar.fillAmount = (float)_currentHealth / (float)MaxHealth;
+			_health--;
+			_healthBar.fillAmount = (float)_health / (float)Health;
 		}
-		if(_currentHealth <= 0)
+		if(_health <= 0)
 		{
 			gameObject.Recycle();
 			Statistics.Score += Price;

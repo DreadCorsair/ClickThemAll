@@ -5,18 +5,12 @@ public class Pitcher : MonoBehaviour
 	public Target CirclePrefab;
 	public Target SquarePrefab;
 
-	public static float CircleThrust { get; private set; }
-	public static float SquareThrust { get; private set; }
-
 	public float PitchFrequency;
 	private float _timer;
 
 
 	private void Start()
 	{
-		CircleThrust = 5;
-		SquareThrust = 2;
-
 		_timer = 0.0f;
 
 		ObjectPool.CreatePool(CirclePrefab, 5);
@@ -25,7 +19,7 @@ public class Pitcher : MonoBehaviour
 	
 	private void Update() 
 	{
-		if(_timer > PitchFrequency)
+		if(_timer >= PitchFrequency)
 		{
 			Vector2 circleSpawnPos = CalculateSpawnPosition();
 			Vector2 squareSpawnPos = CalculateSpawnPosition();
