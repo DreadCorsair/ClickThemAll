@@ -2,45 +2,25 @@
 
 public class Pitcher : MonoBehaviour
 {
-	//Singleton
-	private static Pitcher _instance;
-	public static Pitcher Instance
-	{
-		get
-		{
-			if(_instance == null)
-				_instance = GameObject.FindObjectOfType<Pitcher>();
-			return _instance;
-		}
-	}
-
 	public Target CirclePrefab;
 	public Target SquarePrefab;
-
-	public int CirclePoolSize;
-	public int SquarePoolSize;
-
-	public float CircleInitialThrust;
-	public float SquareInitialThrust;
-	public float AccelerationPerLevel;
 
 	public static float CircleThrust { get; private set; }
 	public static float SquareThrust { get; private set; }
 
 	public float PitchFrequency;
-	public float FrequentPerLevel;
 	private float _timer;
 
 
 	private void Start()
 	{
-		CircleThrust = CircleInitialThrust;
-		SquareThrust = SquareInitialThrust;
+		CircleThrust = 5;
+		SquareThrust = 2;
 
 		_timer = 0.0f;
 
-		ObjectPool.CreatePool(CirclePrefab, CirclePoolSize);
-		ObjectPool.CreatePool(SquarePrefab, SquarePoolSize);
+		ObjectPool.CreatePool(CirclePrefab, 5);
+		ObjectPool.CreatePool(SquarePrefab, 5);
 	}
 	
 	private void Update() 
@@ -57,27 +37,6 @@ public class Pitcher : MonoBehaviour
 		}
 
 		_timer += Time.deltaTime;
-	}
-
-	public void Accelerate()
-	{
-		CircleThrust += AccelerationPerLevel;
-		SquareThrust += AccelerationPerLevel;
-		PitchFrequency -= FrequentPerLevel;
-
-		if(CircleThrust >= 2f && SquareThrust >= 1f)
-		{
-			CircleThrust = 2f;
-			SquareThrust = 1f;
-		}
-		if(PitchFrequency < 1.5f)
-		{
-			PitchFrequency = 1.5f;
-		}
-
-		Debug.Log("Circle Thrust: " + CircleThrust);
-		Debug.Log("Square Thrust: " + SquareThrust);
-		Debug.Log("Frequency: " + PitchFrequency);
 	}
 
 	private Vector2 CalculateSpawnPosition()

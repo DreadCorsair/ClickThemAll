@@ -2,41 +2,29 @@
 
 public class Referee : MonoBehaviour 
 {
-	public int ScoreToLevelUp;
-	public int MaxLifes;
+	public static event EventController.VoidMethodContainer LevelUp;
 
-	public static int Lifes { get; set; }
-	public static int Score { get; set; }
-	public static int Level { get; private set; }
+	public int MaxPlayerLifes;
+	public float TimePerLevel;
+	private float _timer;
 
 	private int _scoreToLevelUp;
-	private int _missesToGameOver;
 
 
 	private void Start()
 	{
-		_scoreToLevelUp = ScoreToLevelUp;
-		Level = 1;
-		Lifes = MaxLifes;
+		Statistics.Reset(MaxPlayerLifes);
 	}
 
 	private void Update() 
 	{
-		if(Score >= _scoreToLevelUp)
+		if(_timer >= TimePerLevel * Statistics.Level)
 		{
-			Pitcher.Instance.Accelerate();
-			_scoreToLevelUp = Score + ScoreToLevelUp;
-			Level++;
-			Debug.Log("LEVEL: " + Level);
+			Statistics.Level++;
 		}
-		if(Lifes <= 0)
+		if(Statistics.PlayerLifes <= 0)
 		{
 
 		}
-	}
-
-	public void ScoreAdd()
-	{
-		Score += 1;
 	}
 }

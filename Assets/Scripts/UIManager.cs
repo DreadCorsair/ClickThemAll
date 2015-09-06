@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour 
@@ -10,8 +10,8 @@ public class UIManager : MonoBehaviour
 
 	private void Update()
 	{
-		if(Referee.Lifes >= 0)
-			Lifes.text = Referee.Lifes.ToString();
+		if(Referee.PlayerLifes >= 0)
+			Lifes.text = Referee.PlayerLifes.ToString();
 		Score.text = Referee.Score.ToString();
 		Level.text = Referee.Level.ToString();
 	}
