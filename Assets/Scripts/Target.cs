@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Target : MonoBehaviour 
 {
@@ -6,12 +7,18 @@ public class Target : MonoBehaviour
 	public int MaxHealth;
 
 	private int _currentHealth;
+	private Image _healthBar;
 	private bool _onMouse;
 	private float _thrust;
 
 	private void OnEnable() 
 	{
 		_currentHealth = MaxHealth;
+		_healthBar = transform.FindChild("EnemyCanvas").
+							   FindChild("HealthBarBg").
+				               FindChild("HealthBarFill").
+				               GetComponent<Image>();
+		_healthBar.fillAmount = 1;
 		_onMouse = false;
 		_thrust = 0.0f;
 	}
@@ -29,6 +36,7 @@ public class Target : MonoBehaviour
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
 			_currentHealth--;
+			_healthBar.fillAmount = (float)_currentHealth / (float)MaxHealth;
 		}
 		if(_currentHealth <= 0)
 		{
