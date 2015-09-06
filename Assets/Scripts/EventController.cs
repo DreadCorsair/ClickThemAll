@@ -2,13 +2,16 @@
 
 public class EventController : MonoBehaviour 
 {
-	public EscMenu EscMenu;
 	public Referee Referee;
+	public EscMenu EscMenu;
+	public GameOverMenu GameOverMenu;
 
-	public delegate void VoidMethodContainer();
+	public delegate void MethodContainer();
+
 
 	private void Awake()
 	{
 		InputAggregator.EscKeyDown += EscMenu.SwitchDisplay;
+		Referee.GameOver += GameOverMenu.Display;
 	}
 }

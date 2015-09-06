@@ -24,7 +24,7 @@ public class Target : MonoBehaviour
 		_onMouse = false;
 	}
 
-	private void Update() 
+	private void FixedUpdate()
 	{
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{

@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class InputAggregator : MonoBehaviour 
 {
-	public static event EventController.VoidMethodContainer EscKeyDown;
+	public static event EventController.MethodContainer EscKeyDown;
 
 	private void Update() 
 	{

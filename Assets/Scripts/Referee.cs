@@ -3,11 +3,10 @@
 public class Referee : MonoBehaviour 
 {
 	public int MaxPlayerLifes;
-	public float TimePerLevel;
+	public float TimeToLevelUp;
 	private float _timer;
 
-	private int _scoreToLevelUp;
-
+	public static event EventController.MethodContainer GameOver;
 
 	private void Start()
 	{
@@ -16,7 +15,7 @@ public class Referee : MonoBehaviour
 
 	private void Update() 
 	{
-		if(_timer >= TimePerLevel * Statistics.Level)
+		if(_timer >= TimeToLevelUp * Statistics.Level)
 		{
 			Statistics.Level++;
 		}
@@ -24,7 +23,7 @@ public class Referee : MonoBehaviour
 
 		if(Statistics.PlayerLifes <= 0)
 		{
-
+			GameOver();
 		}
 	}
 }
