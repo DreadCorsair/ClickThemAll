@@ -25,26 +25,23 @@ public class Target : MonoBehaviour
 	
 	private void Update() 
 	{
-		if(!EscMenu.IsEnable)
+		if(gameObject.tag == "circle")
+			_thrust = Pitcher.CircleThrust;
+		else if(gameObject.tag == "square")
+			_thrust = Pitcher.SquareThrust;
+		
+		//move
+		gameObject.rigidbody2D.AddForce(-Vector2.right * _thrust);
+		
+		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{
-			if(gameObject.tag == "circle")
-				_thrust = Pitcher.CircleThrust;
-			else if(gameObject.tag == "square")
-				_thrust = Pitcher.SquareThrust;
-			
-			//move
-			gameObject.rigidbody2D.AddForce(-Vector2.right * _thrust);
-			
-			if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
-			{
-				_currentHealth--;
-				_healthBar.fillAmount = (float)_currentHealth / (float)MaxHealth;
-			}
-			if(_currentHealth <= 0)
-			{
-				gameObject.Recycle();
-				Referee.Score += Price;
-			}
+			_currentHealth--;
+			_healthBar.fillAmount = (float)_currentHealth / (float)MaxHealth;
+		}
+		if(_currentHealth <= 0)
+		{
+			gameObject.Recycle();
+			Referee.Score += Price;
 		}
 	}
 
