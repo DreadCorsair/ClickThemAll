@@ -12,6 +12,7 @@ public class EscMenu : MonoBehaviour
 		IsEnable = false;
 		_state = State.Disable;
 		Panel.SetActive(false);
+		Time.timeScale = 1;
 	}
 	
 	private void Update() 

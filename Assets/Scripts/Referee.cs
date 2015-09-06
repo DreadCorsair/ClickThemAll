@@ -3,10 +3,10 @@
 public class Referee : MonoBehaviour 
 {
 	public int ScoreToLevelUp;
-	public int MissesToGameOver;
+	public int MaxLifes;
 
+	public static int Lifes { get; set; }
 	public static int Score { get; set; }
-	public static int Misses { get; set; }
 	public static int Level { get; private set; }
 
 	private int _scoreToLevelUp;
@@ -16,8 +16,8 @@ public class Referee : MonoBehaviour
 	private void Start()
 	{
 		_scoreToLevelUp = ScoreToLevelUp;
-		_missesToGameOver = MissesToGameOver;
 		Level = 1;
+		Lifes = MaxLifes;
 	}
 
 	private void Update() 
@@ -29,11 +29,9 @@ public class Referee : MonoBehaviour
 			Level++;
 			Debug.Log("LEVEL: " + Level);
 		}
-		if(Misses >= _missesToGameOver)
+		if(Lifes <= 0)
 		{
-//			Debug.Log("GAME OVER");
+
 		}
-//		Debug.Log("Score: " + Score);
-//		Debug.Log("Misses: " + Misses);
 	}
 }
