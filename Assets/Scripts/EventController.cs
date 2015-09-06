@@ -3,6 +3,7 @@
 public class EventController : MonoBehaviour 
 {
 	public Referee Referee;
+	public Statistics Statistics;
 	public EscMenu EscMenu;
 	public GameOverMenu GameOverMenu;
 
@@ -13,5 +14,7 @@ public class EventController : MonoBehaviour
 	{
 		InputAggregator.EscKeyDown += EscMenu.SwitchDisplay;
 		Referee.GameOver += GameOverMenu.Display;
+		Referee.GameOver += Statistics.Hide;
+		Referee.GameOver += ObjectPool.RecycleAll;
 	}
 }
