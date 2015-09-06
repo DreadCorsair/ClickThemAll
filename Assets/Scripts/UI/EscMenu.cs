@@ -2,8 +2,11 @@
 
 public class EscMenu : MonoBehaviour 
 {
+	public static bool IsLocked { get; private set; }
+
 	private void Start() 
 	{
+		IsLocked = false;
 		gameObject.SetActive(false);
 	}
 
@@ -17,5 +20,11 @@ public class EscMenu : MonoBehaviour
 		{
 			gameObject.SetActive(true);
 		}
+	}
+
+	public void Lock()
+	{
+		gameObject.SetActive(false);
+		IsLocked = true;
 	}
 }

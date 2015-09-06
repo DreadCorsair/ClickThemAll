@@ -6,6 +6,6 @@ public class InputAggregator : MonoBehaviour
 
 	private void Update() 
 	{
-		if(Input.GetKeyDown(KeyCode.Escape)) EscKeyDown();
+		if(Input.GetKeyDown(KeyCode.Escape) && !EscMenu.IsLocked) EscKeyDown();
 	}
 }
