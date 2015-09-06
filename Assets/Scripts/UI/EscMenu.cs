@@ -27,4 +27,9 @@ public class EscMenu : MonoBehaviour
 		gameObject.SetActive(false);
 		IsLocked = true;
 	}
+
+	public void OnDestroy()
+	{
+		IsLocked = false;
+	}
 }

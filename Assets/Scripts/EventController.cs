@@ -18,4 +18,13 @@ public class EventController : MonoBehaviour
 		Referee.GameOver += ObjectPool.RecycleAll;
 		Referee.GameOver += EscMenu.Lock;
 	}
+
+	private void OnDestroy()
+	{
+		InputAggregator.EscKeyDown -= EscMenu.SwitchDisplay;
+		Referee.GameOver -= GameOverMenu.Display;
+		Referee.GameOver -= Statistics.Hide;
+		Referee.GameOver -= ObjectPool.RecycleAll;
+		Referee.GameOver -= EscMenu.Lock;
+	}
 }
