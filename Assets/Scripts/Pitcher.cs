@@ -7,6 +7,7 @@ public class Pitcher : MonoBehaviour
 
 	public float BasicFrequency;
 	public float MaxFrequency;
+
 	private float _frequency;
 	private float _timer;
 
@@ -14,7 +15,7 @@ public class Pitcher : MonoBehaviour
 	private void Start()
 	{
 		_frequency = BasicFrequency;
-		_timer = 0.0f;
+		_timer = BasicFrequency;
 
 		ObjectPool.CreatePool(CirclePrefab, 5);
 		ObjectPool.CreatePool(SquarePrefab, 5);

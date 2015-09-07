@@ -4,10 +4,12 @@ public class Referee : MonoBehaviour
 {
 	public int MaxPlayerLifes;
 	public float TimeToLevelUp;
+
 	private float _timer;
 
 	public static event EventController.MethodContainer GameOver;
 	public static event EventController.MethodContainer LevelUp;
+
 
 	private void Start()
 	{

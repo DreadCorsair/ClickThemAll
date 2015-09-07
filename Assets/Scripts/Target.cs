@@ -5,11 +5,12 @@ public class Target : MonoBehaviour
 {
 	public int Price;
 	public int Health;
+
 	public float BasicSpeed;
 	public float MaxSpeed;
 
-	private float _speed;
 	private int _health;
+	private float _speed;
 	private Image _healthBar;
 	private bool _onMouse;
 

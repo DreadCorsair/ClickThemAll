@@ -10,6 +10,11 @@ public class EscMenu : MonoBehaviour
 		gameObject.SetActive(false);
 	}
 
+	private void OnDestroy()
+	{
+		IsLocked = false;
+	}
+
 	public void SwitchDisplay()
 	{
 		if(gameObject.activeSelf)
@@ -26,10 +31,5 @@ public class EscMenu : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 		IsLocked = true;
-	}
-
-	public void OnDestroy()
-	{
-		IsLocked = false;
 	}
 }
