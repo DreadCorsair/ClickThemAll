@@ -28,5 +28,6 @@ public class EventController : MonoBehaviour
 		Referee.GameOver -= Statistics.Hide;
 		Referee.GameOver -= ObjectPool.RecycleAll;
 		Referee.GameOver -= EscMenu.Lock;
+		Referee.LevelUp -= Pitcher.Accelerate;
 	}
 }
