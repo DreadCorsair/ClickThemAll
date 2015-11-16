@@ -37,16 +37,17 @@ public class Target : MonoBehaviour
 	{
 		gameObject.GetComponent<Rigidbody2D>().velocity = -Vector2.right * _speed;
 
-		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
-		{
-			_health--;
-			_healthBar.fillAmount = (float)_health / (float)Health;
-		}
 		if(_health <= 0)
 		{
 			gameObject.Recycle();
 			Statistics.Score += Price;
 		}
+	}
+
+	public void Hit()
+	{
+		_health--;
+		_healthBar.fillAmount = (float)_health / (float)Health;
 	}
 
 	private void OnMouseEnter()
