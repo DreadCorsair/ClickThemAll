@@ -35,7 +35,7 @@ public class Target : MonoBehaviour
 
 	private void Update()
 	{
-		gameObject.rigidbody2D.velocity = -Vector2.right * _speed;
+		gameObject.GetComponent<Rigidbody2D>().velocity = -Vector2.right * _speed;
 
 		if(_onMouse && Input.GetKeyDown(KeyCode.Mouse0))
 		{

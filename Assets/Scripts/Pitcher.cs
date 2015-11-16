@@ -39,8 +39,8 @@ public class Pitcher : MonoBehaviour
 
 	private Vector2 CalculateSpawnPosition()
 	{
-		Vector3 spawnMinPos = transform.InverseTransformPoint(collider2D.bounds.max);
-		Vector3 spawnMaxPos = transform.InverseTransformPoint(collider2D.bounds.min);
+		Vector3 spawnMinPos = transform.InverseTransformPoint(GetComponent<Collider2D>().bounds.max);
+		Vector3 spawnMaxPos = transform.InverseTransformPoint(GetComponent<Collider2D>().bounds.min);
 
 		float randValueY = Random.Range(spawnMinPos.y, spawnMaxPos.y);
 		
