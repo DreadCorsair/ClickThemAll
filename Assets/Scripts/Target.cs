@@ -14,6 +14,8 @@ public class Target : MonoBehaviour
 	private Image _healthBar;
 	private bool _onMouse;
 
+	private Transform _spriteTrans;
+	private int _randomDirection;
 
 	private void Start()
 	{
@@ -30,12 +32,17 @@ public class Target : MonoBehaviour
 				               GetComponent<Image>();
 		_healthBar.fillAmount = 1;
 
+		_spriteTrans = transform.FindChild ("sprite").transform;
+		System.Random rand = new System.Random ();
+		_randomDirection = rand.Next (-2, 2);
+
 		_onMouse = false;
 	}
 
 	private void Update()
 	{
 		gameObject.GetComponent<Rigidbody2D>().velocity = -Vector2.right * _speed;
+		_spriteTrans.Rotate (new Vector3(0f, 0f, _randomDirection != 0 ? _randomDirection : 1) * _speed);
 
 		if(_health <= 0)
 		{
